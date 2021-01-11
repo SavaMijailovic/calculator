@@ -139,7 +139,7 @@ public class Calculator extends Application {
         hb.setAlignment(Pos.CENTER);
     }
 
-    private static void checkChar(char c) {
+    private static void append(char c) {
         if (!Character.isDigit(c) && c != '-' && c != '.' && c != BACKSPACE && c != DEL) {
             return;
         }
@@ -167,33 +167,6 @@ public class Calculator extends Application {
             tfTmp.setText(tfTmp.getText(1, tfTmp.getLength()));
         }
     }
-
-    /*
-    private static void checkChar(char c) {
-        lbTmp.setVisible(false);
-        if (!Character.isDigit(c) && c != '-' && c != '.') {
-            if (c >= 32 && c != 127) {
-                tfTmp.deletePreviousChar();
-            }
-            return;
-        }
-        if (Character.isDigit(c)) return;
-        if (c == '-' || c == '.') {
-            if (tfTmp.getLength() == 1) return;
-
-            if (c == '-') {
-                if (tfTmp.getCaretPosition() == 1 && !tfTmp.getText().substring(1, tfTmp.getLength()).contains("-")) return;
-            }
-
-            if (c == '.') {
-                String str = tfTmp.getText().substring(0, tfTmp.getCaretPosition() - 1);
-                str += (tfTmp.getText().substring(tfTmp.getCaretPosition(), tfTmp.getLength()));
-                if (!str.contains(".")) return;
-            }
-        }
-        tfTmp.deletePreviousChar();
-    }
-    */
 
     @Override
     public void start(Stage stage) {
@@ -318,7 +291,7 @@ public class Calculator extends Application {
                 tfTmp = tfx;
             }
             if (!e.getText().isEmpty()) {
-                checkChar(e.getText().charAt(0));
+                append(e.getText().charAt(0));
             }
         });
 
@@ -327,7 +300,7 @@ public class Calculator extends Application {
                 tfTmp = tfy;
             }
             if (!e.getText().isEmpty()) {
-                checkChar(e.getText().charAt(0));
+                append(e.getText().charAt(0));
             }
         });
 
